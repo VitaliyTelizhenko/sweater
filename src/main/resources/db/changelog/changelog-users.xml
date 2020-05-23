@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="3" author="vit">
+        <createTable tableName="users">
+            <column name="id" type="bigint" >
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="username" type="varchar(255)">
+                <constraints unique="true"/>
+            </column>
+            <column name="password" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(155)" />
+            <column name="active" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="activation_code" type="varchar(255)" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="vit">
+        <createTable tableName="user_role">
+            <column name="user_id" type="bigint" >
+                <constraints  nullable="false" />
+            </column>
+            <column name="roles" type="varchar(255)" />
+        </createTable>
+    </changeSet>
+
+<changeSet id="6" author="vit">
+    <addForeignKeyConstraint baseTableName="user_role"
+                             baseColumnNames="user_id"
+                             constraintName="user_role_user_fk"
+                             referencedTableName="users"
+                             referencedColumnNames="id" />
+    <rollback>
+        <dropForeignKeyConstraint baseTableName="user_role" constraintName="user_role_user_fk" />
+    </rollback>
+</changeSet>
+
+<changeSet id="5" author="vit">
+    <addForeignKeyConstraint baseTableName="messages"
+                             baseColumnNames="user_id"
+                             constraintName="message_user_fk"
+                             referencedTableName="users"
+                             referencedColumnNames="id" />
+    <rollback>
+        <dropForeignKeyConstraint baseTableName="messages" constraintName="message_user_fk" />
+    </rollback>
+</changeSet>
+</databaseChangeLog>

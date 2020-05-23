@@ -29,17 +29,23 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mustache</artifactId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--<dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mail</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -63,11 +69,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-maven-plugin</artifactId>
             <version>3.8.9</version>
-        </dependency>-->
+        </dependency>
     </dependencies>
 
     <build>
@@ -77,14 +83,14 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!--<plugin>
+            <plugin>
               <groupId>org.liquibase</groupId>
               <artifactId>liquibase-maven-plugin</artifactId>
               <version>3.8.9</version>
               <configuration>
                 <propertyFile>src/main/resources/liquibase.properties</propertyFile>
               </configuration>
-            </plugin>-->
+            </plugin>
         </plugins>
     </build>
 
