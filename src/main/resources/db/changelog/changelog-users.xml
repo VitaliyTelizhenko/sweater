@@ -55,4 +55,22 @@
         <dropForeignKeyConstraint baseTableName="messages" constraintName="message_user_fk" />
     </rollback>
 </changeSet>
+    
+<changeSet id="7" author="vit">
+    <tagDatabase tag="version_1.0" />
+</changeSet>
+
+<changeSet id="8" author="vit">
+    <createTable tableName="user_subscriptions">
+        <column name="channel_id" type="bigint">
+            <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_sub"
+                         foreignKeyName="user_subscriptions" references="users(id)"/>
+        </column>
+        <column name="subscriber_id" type="bigint">
+            <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_sub"
+                         foreignKeyName="user_subscribers" references="users(id)"/>
+        </column>
+    </createTable>
+</changeSet>
+
 </databaseChangeLog>

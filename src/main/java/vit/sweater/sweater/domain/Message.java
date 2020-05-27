@@ -1,6 +1,7 @@
 package vit.sweater.sweater.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "messages")
@@ -9,6 +10,7 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @NotBlank(message = "Please fill the message")
     private String text;
     private String tag;
     private String filename;
